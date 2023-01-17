@@ -1,4 +1,4 @@
-package com.santander;
+package com.santander.locatecar;
 
 public class Main {
     public static void main(String[] args) {

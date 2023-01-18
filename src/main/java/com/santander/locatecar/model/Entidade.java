@@ -1,2 +1,4 @@
-package com.santander.locatecar.model;public interface Entidade {
+package com.santander.locatecar.model;
+
+public interface Entidade {
 }

@@ -1,2 +1,4 @@
-package com.santander.locatecar.model;public class TipoVeiculo {
+package com.santander.locatecar.model;
+
+public class TipoVeiculo {
 }

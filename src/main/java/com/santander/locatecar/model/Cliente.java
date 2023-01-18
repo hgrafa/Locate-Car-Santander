@@ -1,2 +1,4 @@
-package com.santander.locatecar.model;public class Cliente {
+package com.santander.locatecar.model;
+
+public class Cliente {
 }

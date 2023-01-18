@@ -1,4 +1,11 @@
 package com.santander.locatecar.persistence;
 
-public interface ClienteRepository {
+import com.santander.locatecar.model.Cliente;
+
+import java.util.List;
+
+public interface ClienteRepository extends RepositoryGenerico<Cliente> {
+    List<Cliente> buscarPeloNome(String parteNome);
+
 }
+

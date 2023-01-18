@@ -1,4 +1,15 @@
 package com.santander.locatecar.view;
 
-public class MenuGeral {
+public class MenuGeral extends MenuComSubmenus {
+    public MenuGeral(String descricao) {
+        super(descricao);
+    }
+
+    @Override
+    protected void acao() {
+        super.acao();
+
+        this.agir();
+    }
 }
+

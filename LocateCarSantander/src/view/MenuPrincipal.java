@@ -5,14 +5,20 @@ import java.util.Scanner;
 /*
 Nesse classe está o menu principal da aplicação, que será dividida em três submenus (cliente, agencia e veículo).
 No método iniciar, tem a entrada de dados do usuário e o switch que vai direcionar para o submenu correspondente.
+Falta fazer o menu cliente e menu agência.
 */
 
 public class MenuPrincipal {
     private Scanner entrada = new Scanner(System.in);
     private MenuVeiculo menuVeiculo;
+    private MenuAgencia menuAgencia;
+    private MenuCliente menuCliente;
 
     public MenuPrincipal(){
         this.menuVeiculo = new MenuVeiculo();
+        this.menuAgencia = new MenuAgencia();
+        this.menuCliente = new MenuCliente();
+
     }
     private String obterOpcao() {
         return entrada.nextLine();
@@ -33,8 +39,8 @@ public class MenuPrincipal {
 
     private void direcionarOpcao(String opcao) {
         switch (opcao) {
-            case "1" -> this.menuVeiculo.iniciar(); //menu Cliente (alterar)
-            case "2" -> this.menuVeiculo.iniciar(); //menu Agência (alterar)
+            case "1" -> this.menuCliente.iniciar();
+            case "2" -> this.menuAgencia.iniciar();
             case "3" -> this.menuVeiculo.iniciar();
             default -> {
                 if(!opcao.equals("0")) {

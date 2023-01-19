@@ -2,9 +2,9 @@ package model;
 
 
 public enum TipoVeiculo {
-    MOTO("Moto", 100),
-    CARRO("Carro", 150),
-    CAMINHAO("Caminhão", 200);
+    MOTO("Moto", 100.00f),
+    CARRO("Carro", 150.00f),
+    CAMINHAO("Caminhão", 200.00f);
 
     private String nome;
     private float preco;
@@ -20,5 +20,16 @@ public enum TipoVeiculo {
                 "nome='" + nome + '\'' +
                 ", preco=" + preco +
                 '}';
+    }
+
+    public static TipoVeiculo criarTipo(String tipo) {
+        if ("Moto".equalsIgnoreCase(tipo)) {
+            return TipoVeiculo.MOTO;
+        } else if ("Carro".equalsIgnoreCase(tipo)) {
+            return TipoVeiculo.CARRO;
+        } else if ("Caminhão".equalsIgnoreCase(tipo) || "Caminhao".equalsIgnoreCase(tipo)) {
+            return TipoVeiculo.CAMINHAO;
+        }
+        return null;
     }
 }

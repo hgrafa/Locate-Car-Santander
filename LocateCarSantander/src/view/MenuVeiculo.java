@@ -1,15 +1,27 @@
 package view;
 
+import controllers.VeiculosController;
+import model.TipoVeiculo;
+import model.Veiculo;
+
+import java.util.List;
 import java.util.Scanner;
 
 /*
 Similar ao método do menu principal, esse é o submenu Veiculo, onde teremos todas as opções correspondentes às ações do veículo.
 No switch aqui não vai direcionar para outro submenu, mas sim para o controler com a ação específica.
+Falta implementar o "alterar" veículo.
  */
 public class MenuVeiculo {
-    private Scanner entrada = new Scanner(System.in);
+    private Scanner entrada;
+    private VeiculosController controller;
 
-    private String obterOpcao() {
+    public MenuVeiculo(){
+        this.entrada = new Scanner(System.in);
+        this.controller = new VeiculosController();
+    }
+
+    private String lerEntrada() {
         return entrada.nextLine();
     }
 
@@ -46,14 +58,33 @@ public class MenuVeiculo {
         String opcao;
         do {
             this.listarOpcoes();
-            opcao = this.obterOpcao();
+            opcao = this.lerEntrada();
             this.direcionarOpcao(opcao);
 
         } while (!opcao.equals("0"));
     }
 
+
+    //
     private void cadastrarVeiculo(){
-        System.out.println("Chamar VeiculoController.cadastrar");
+        System.out.println("Digite a placa:");
+        System.out.print(">");
+        String placa = this.lerEntrada();
+        System.out.println("Digite o modelo:");
+        System.out.print(">");
+        String modelo = this.lerEntrada();
+
+        TipoVeiculo tipoVeiculo = null;
+        do {
+            System.out.println("Qual o tipo do veiculo (Moto, Carro ou Caminhão):");
+            System.out.print(">");
+            String tipo = this.lerEntrada();
+            tipoVeiculo = TipoVeiculo.criarTipo(tipo);
+        } while (tipoVeiculo == null);
+
+        this.controller.cadastrar(placa, modelo, tipoVeiculo);
+
+        System.out.println("Veículo cadastrado com sucesso!");
     }
 
     private void alterarVeiculo(){
@@ -61,11 +92,23 @@ public class MenuVeiculo {
     }
 
     private void buscarVeiculo(){
-        System.out.println("Chamar VeiculoController.buscar");
+        System.out.println("Digite um modelo ou uma placa:");
+        System.out.print(">");
+        String palavraBuscada = this.lerEntrada();
+
+        System.out.println("Veículos encontrados:");
+        List<Veiculo> veiculosEncontrados = this.controller.buscar(palavraBuscada);
+        for (Veiculo veiculo: veiculosEncontrados) {
+            System.out.println(veiculo.toString());
+        }
     }
 
     private void listarVeiculos(){
-        System.out.println("Chamar VeiculoController.listar");
+        System.out.println("Todos os veículos:");
+        List<Veiculo> todosOsVeiculos = this.controller.listarTodos();
+        for (Veiculo veiculo: todosOsVeiculos) {
+            System.out.println(veiculo.toString());
+        }
     }
 
 }

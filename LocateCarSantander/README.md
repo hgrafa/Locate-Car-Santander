@@ -51,3 +51,5 @@ Caso pessoa juridica tenha ficado com o carro mais que 3 dias terá direito a 10
 <p align="left">Tatyanna Mota<br>Danilo Chaimsohn<br>Luis Guilherme Narguis<br>Hugo Rafael<br>Vitor Pirovani</p>
 
 ###
+
+Apresentação https://docs.google.com/presentation/d/1SLSR1UK59oJkyTC09oQO1ruNdfGqtJQ4I9jhi57IubU/edit?usp=sharing

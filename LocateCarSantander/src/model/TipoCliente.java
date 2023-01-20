@@ -22,9 +22,9 @@ public enum TipoCliente {
                 '}';
     }
     public static TipoCliente criarTipo(String tipo) {
-        if ("PessoaFisica".equalsIgnoreCase(tipo)) {
+        if ("PessoaFisica".equalsIgnoreCase(tipo) || "Pessoa Física".equalsIgnoreCase(tipo) || "pf".equalsIgnoreCase(tipo)) {
             return TipoCliente.PESSOA_FISICA;
-        } else if ("PessoaJuridica".equalsIgnoreCase(tipo)) {
+        } else if ("PessoaJuridica".equalsIgnoreCase(tipo) || "Pessoa Jurídica".equalsIgnoreCase(tipo) || "pj".equalsIgnoreCase(tipo)) {
             return TipoCliente.PESSOA_JURIDICA;
         }
         return null;

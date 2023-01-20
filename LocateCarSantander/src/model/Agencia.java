@@ -4,20 +4,29 @@ import java.util.UUID;
 
 public class Agencia {
     private String nome;
-    private String endereco;
+    private Endereco endereco;
     private UUID id;
 
 
-    public Agencia(String nome, String endereco) {
+    public Agencia(String nome, Endereco endereco) {
         this.id = UUID.randomUUID();
         this.nome = nome;
         this.endereco = endereco;
+    }
+    public Agencia(UUID id, String nome, Endereco endereco) {
+        this.id = id;
+        this.nome = nome;
+        this.endereco = endereco;
+    }
+
+    public UUID getId() {
+        return id;
     }
     public String getNome() {
         return nome;
     }
 
-    public String getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
@@ -25,7 +34,8 @@ public class Agencia {
     public String toString() {
         return "Agencia{" +
                 "nome='" + nome + '\'' +
-                ", logradouro='" + endereco + '\'' +
+                ", endereco=" + endereco +'\'' +
+                ", \t id = " + id +
                 '}';
     }
 }

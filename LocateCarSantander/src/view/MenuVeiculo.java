@@ -1,6 +1,7 @@
 package view;
 
 import controllers.VeiculosController;
+import model.TipoCliente;
 import model.TipoVeiculo;
 import model.Veiculo;
 
@@ -70,37 +71,66 @@ public class MenuVeiculo {
         System.out.println("Digite a placa:");
         System.out.print(">");
         String placa = this.lerEntrada();
-        System.out.println("Digite o modelo:");
-        System.out.print(">");
-        String modelo = this.lerEntrada();
-
-        TipoVeiculo tipoVeiculo = null;
-        do {
-            System.out.println("Qual o tipo do veiculo (Moto, Carro ou Caminhão):");
+        if(this.controller.buscarPorNumeroDaPlaca(placa)==null){
+            TipoVeiculo tipoVeiculo = null;
+            do {
+                System.out.println("Qual o tipo do veiculo (Moto, Carro ou Caminhão):");
+                System.out.print(">");
+                String tipo = this.lerEntrada();
+                tipoVeiculo = TipoVeiculo.criarTipo(tipo);
+            } while (tipoVeiculo == null);
+            System.out.println("Digite o modelo:");
             System.out.print(">");
-            String tipo = this.lerEntrada();
-            tipoVeiculo = TipoVeiculo.criarTipo(tipo);
-        } while (tipoVeiculo == null);
+            String modelo = this.lerEntrada();
+            this.controller.cadastrar(placa, modelo, tipoVeiculo, true);
 
-        this.controller.cadastrar(placa, modelo, tipoVeiculo);
-
-        System.out.println("Veículo cadastrado com sucesso!");
+            System.out.println("Veículo cadastrado com sucesso!");
+        }else {
+            System.out.println("IMPOSSÍVEL CADASTRAR: Número da placa já cadastrado!");
+        }
     }
 
     private void alterarVeiculo(){
-        System.out.println("Chamar VeiculoController.alterar");
+        System.out.println("Digite a placa do veículo:");
+        System.out.print(">");
+        String numeroDaPlaca = this.lerEntrada();
+        if (this.controller.buscarPorNumeroDaPlaca(numeroDaPlaca)!=null){
+            System.out.println("Digite o novo modelo:");
+            System.out.print(">");
+            String modelo = this.lerEntrada();
+            TipoVeiculo tipoVeiculo = null;
+            do {
+                System.out.println("Qual o novo tipo do veículo? (Moto, Carro ou Caminhão):");
+                System.out.print(">");
+                String tipo = this.lerEntrada();
+                tipoVeiculo = TipoVeiculo.criarTipo(tipo);
+            } while (tipoVeiculo == null);
+            System.out.println("Veículo ainda está disponível? (Sim/Não)");
+            System.out.print(">");
+            String disponivelString = this.lerEntrada();
+            Boolean disponivel = disponivelString.trim().equalsIgnoreCase("Sim");
+
+            this.controller.cadastrar(numeroDaPlaca,modelo,tipoVeiculo,disponivel);
+        }else {
+            System.out.println("Número da placa não encontrada!");
+        }
+
     }
 
     private void buscarVeiculo(){
         System.out.println("Digite um modelo ou uma placa:");
         System.out.print(">");
         String palavraBuscada = this.lerEntrada();
-
-        System.out.println("Veículos encontrados:");
         List<Veiculo> veiculosEncontrados = this.controller.buscar(palavraBuscada);
-        for (Veiculo veiculo: veiculosEncontrados) {
-            System.out.println(veiculo.toString());
+        if (veiculosEncontrados!=null && !veiculosEncontrados.isEmpty()){
+            System.out.println("Veículos encontrados:");
+            for (Veiculo veiculo: veiculosEncontrados) {
+                System.out.println(veiculo.toString());
+            }
+        }else {
+            System.out.println("NENHUM VEÍCULO ENCONTRADO!");
         }
+
     }
 
     private void listarVeiculos(){

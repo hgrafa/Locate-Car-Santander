@@ -7,7 +7,7 @@ public class Veiculo {
     private boolean disponivel;
 
     //construtor veículo
-    public Veiculo(String placa, String modelo, TipoVeiculo tipo, boolean disponivel) {
+    public Veiculo(String placa, String modelo, TipoVeiculo tipo, Boolean disponivel) {
         this.placa = placa;
         this.modelo = modelo;
         this.tipo = tipo;

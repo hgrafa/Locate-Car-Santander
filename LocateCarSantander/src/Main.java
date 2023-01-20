@@ -1,5 +1,4 @@
-import model.TipoVeiculo;
-import model.Veiculo;
+
 import view.MenuPrincipal;
 
 public class Main {

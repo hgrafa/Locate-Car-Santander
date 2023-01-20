@@ -21,4 +21,12 @@ public enum TipoCliente {
                 "tipo='" + tipo + '\'' +
                 '}';
     }
+    public static TipoCliente criarTipo(String tipo) {
+        if ("PessoaFisica".equalsIgnoreCase(tipo)) {
+            return TipoCliente.PESSOA_FISICA;
+        } else if ("PessoaJuridica".equalsIgnoreCase(tipo)) {
+            return TipoCliente.PESSOA_JURIDICA;
+        }
+        return null;
+    }
 }

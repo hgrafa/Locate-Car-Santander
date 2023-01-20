@@ -1,5 +1,6 @@
 package controllers;
 
+import model.Cliente;
 import model.TipoVeiculo;
 import model.Veiculo;
 import persistence.VeiculosRepository;
@@ -17,13 +18,17 @@ public class VeiculosController {
         this.repositorio = new VeiculosRepository();
     }
 
-    public void cadastrar(String placa, String modelo, TipoVeiculo tipo){
-        Veiculo novoVeiculo = new Veiculo(placa, modelo, tipo, true);
+    public void cadastrar(String placa, String modelo, TipoVeiculo tipo, Boolean disponivel){
+        Veiculo novoVeiculo = new Veiculo(placa, modelo, tipo,disponivel);
         this.repositorio.cadastrar(novoVeiculo);
     }
 
     public List<Veiculo> buscar(String palavraBuscada) {
         return this.repositorio.buscar(palavraBuscada);
+    }
+
+    public Veiculo buscarPorNumeroDaPlaca(String palavraBuscada) {
+        return this.repositorio.buscarPorNumeroDaPlaca(palavraBuscada);
     }
 
     public List<Veiculo> listarTodos() {

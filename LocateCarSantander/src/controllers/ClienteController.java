@@ -23,6 +23,10 @@ public class ClienteController {
         return this.repositorio.buscar(palavraBuscada);
     }
 
+    public Cliente buscarPorDocumentoExato(String palavraBuscada) {
+        return this.repositorio.buscarPorDocumentoExato(palavraBuscada);
+    }
+
     public List<Cliente> listarTodos() {
         return this.repositorio.listarTodos();
     }

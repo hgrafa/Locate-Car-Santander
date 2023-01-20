@@ -3,10 +3,8 @@ package model;
 import java.util.UUID;
 
 public class Agencia {
-
     private String nome;
     private String endereco;
-
     private UUID id;
 
 
@@ -15,7 +13,6 @@ public class Agencia {
         this.nome = nome;
         this.endereco = endereco;
     }
-
     public String getNome() {
         return nome;
     }

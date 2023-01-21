@@ -2,6 +2,10 @@ package view;
 
 import controllers.AgenciaController;
 import controllers.AluguelController;
+import controllers.VeiculosController;
+import persistence.VeiculosRepository;
+import model.Veiculo;
+import model.Aluguel;
 
 import java.util.Scanner;
 
@@ -39,7 +43,21 @@ public class MenuAluguel {
     private void alterarUmAluguel() {
     }
 
-    private void alugarVeiculo() {
+    private String alugarVeiculo(Veiculo veiculo, Aluguel aluguel) {
+        System.out.println("Digite a placa do veículo a ser alugado: ");
+        System.out.println("> ");
+        String placa = veiculo.getPlaca();
+        String agret = veiculo.getAgenciaRetirada();
+        String agdev = veiculo.getAgenciaDevolucao();
+        String numeroDaPlaca = entrada.nextLine();
+        float valorTotal = aluguel.getPreco();
+
+        if (this.controller.buscarPorNumeroDaPlaca(numeroDaPlaca)!=null){
+            return String.format("Placa do veículo alugado: " + placa + 
+            "\nRetirado na agência: " + agret + "\nDevolver na agência: " + agdev +
+            "\nValor total: " + valorTotal);
+        
+        }
     }
 
     public void iniciar() {

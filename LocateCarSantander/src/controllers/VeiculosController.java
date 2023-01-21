@@ -1,5 +1,6 @@
 package controllers;
 
+import model.Agencia;
 import model.Cliente;
 import model.TipoVeiculo;
 import model.Veiculo;
@@ -18,8 +19,8 @@ public class VeiculosController {
         this.repositorio = new VeiculosRepository();
     }
 
-    public void cadastrar(String placa, String modelo, TipoVeiculo tipo, Boolean disponivel){
-        Veiculo novoVeiculo = new Veiculo(placa, modelo, tipo,disponivel);
+    public void cadastrar(String placa, String modelo, TipoVeiculo tipo, Boolean disponivel, Agencia agenciaRetirada, Agencia agenciaDevolucao){
+        Veiculo novoVeiculo = new Veiculo(placa, modelo, tipo, disponivel, agenciaRetirada, agenciaDevolucao);
         this.repositorio.cadastrar(novoVeiculo);
     }
 
